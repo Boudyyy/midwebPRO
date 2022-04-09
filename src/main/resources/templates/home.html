@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>new student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-text fs-6 fw-bolder">
+                Created by Erboto Tazabekov Com-20
+            using Spring Boot, BootStrap and Postgres
+        </span>
+    <img src="https://st-0.akipress.org/st_all/bilim/9/1519540999.2.jpg" width="100" height="100" class="d-inline-block align-top" alt="">
+</nav>
+
+
+<h1 align="center">add new team</h1>
+
+<form action="#" th:action="@{/save}" th:object="${team}" method="post">
+    <div align="left">
+        <tr>
+            <label class="form-label" >Name</label>
+            <td>
+                <input type="hidden" th:field="*{teamId}" />
+                <input type="text" th:field="*{name}" class="form-control" placeholder="Name" />
+            </td>
+        </tr>
+    </div>
+
+    <div alight="left">
+        <tr>
+            <label class="form-label" >Carry</label>
+            <td>
+                <input type="text" th:field="*{carry}" class="form-control" placeholder="Carry" />
+            </td>
+        </tr>
+    </div>
+
+    <div alight="left">
+        <tr>
+            <label class="form-label" >Mider</label>
+            <td>
+                <input type="text" th:field="*{mider}" class="form-control" placeholder="mider" />
+            </td>
+        </tr>
+    </div>
+
+    <div alight="left">
+        <tr>
+            <label class="form-label" >Offlaner</label>
+            <td>
+                <input type="text" th:field="*{offlaner}" class="form-control" placeholder="Offlaner" />
+            </td>
+        </tr>
+    </div>
+
+    <label class="form-label" >SemiSupport</label>
+    <td>
+        <input type="text" th:field="*{semiSupport}" class="form-control" placeholder="SemiSupport" />
+    </td>
+
+    <label class="form-label" >HardSupport</label>
+    <td>
+        <input type="text" th:field="*{hardSupport}" class="form-control" placeholder="hardSuppport" />
+    </td>
+
+    <tr>
+        <td colspan="2"><button type="submit" class="mt-4 btn btn-primary">Save</button> </td>
+    </tr>
+</form>
+
+<table class="table table-secondary table-striped ">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Carry</th>
+        <th scope="col">Mider</th>
+        <th scope="col">Offlaner</th>
+        <th scope="col">SemiSupport</th>
+        <th scope="col">HardSupport</th>
+        <th scope="col">delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="team : ${teamList} ">
+        <td th:text="${team.teamId}"></td>
+        <td th:text="${team.name}"></td>
+        <td th:text="${team.carry}"></td>
+        <td th:text="${team.mider}"></td>
+        <td th:text="${team.offlaner}"></td>
+        <td th:text="${team.semiSupport}"></td>
+        <td th:text="${team.hardSupport}"></td>
+        <td>
+            <a th:href="@{'/delete/' + ${team.teamId}}">delete</a>
+        </td>
+
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>
+
